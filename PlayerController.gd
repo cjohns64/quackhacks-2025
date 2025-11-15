@@ -17,14 +17,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var up_down = Input.get_axis("nose_up", "nose_down")
+	var up_down = Input.get_axis("nose_down", "nose_up")
 	var left_right = Input.get_axis("roll_left", "roll_right")
 	var throttle_change = Input.get_axis("throttle_down", "throttle_up")
 	
-	if up_down != Vector2.ZERO:
-		rotation += transform.basis.y * up_down * delta
-	if left_right != Vector2.ZERO:
-		rotation += transform.basis.x * left_right * delta
-	if throttle_change != Vector2.ZERO:
+	if up_down != 0:
+		rotation += transform.basis.x * up_down * delta
+	if left_right != 0:
+		rotation += transform.basis.z * left_right * delta
+	if throttle_change != 0:
 		throttle += throttle_change * delta
-		clampf(throttle, throttle_min, throttle_max)
+	
+	clampf(throttle, throttle_min, throttle_max)
+	
+	position += -transform.basis.z * throttle * delta

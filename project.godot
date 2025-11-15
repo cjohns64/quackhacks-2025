@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="quackhacks-2025"
+run/main_scene="uid://w4awhwa35ma4"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 
