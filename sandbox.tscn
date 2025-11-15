@@ -1,15 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://w4awhwa35ma4"]
 
 [ext_resource type="PackedScene" uid="uid://bd2dhg5c7cps" path="res://PlayerController.tscn" id="1_3h184"]
+[ext_resource type="PackedScene" path="res://stars_environment.tscn" id="1_cojph"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_cojph"]
 
-[sub_resource type="Environment" id="Environment_3h184"]
-background_mode = 1
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-
 [node name="Sandbox" type="Node3D"]
+
+[node name="StarsEnvironment" parent="." instance=ExtResource("1_cojph")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.63913035, -0.43452632, 0.6345859, 0, 0.82510364, 0.5649814, -0.76909846, -0.36109677, 0.52734876, 0, 0, 0)
@@ -31,6 +29,3 @@ mesh = SubResource("SphereMesh_cojph")
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.2071905)
 mesh = SubResource("SphereMesh_cojph")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_3h184")
