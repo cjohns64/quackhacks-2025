@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkel3gcb3p1k0"]
+
+[ext_resource type="Texture2D" uid="uid://c6qiujpbgvky1" path="res://BlenderFiles/Blends/Textures/StarsWorldEnv.jpg" id="1_bks71"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gwk0t"]
+panorama = ExtResource("1_bks71")
+
+[sub_resource type="Sky" id="Sky_16fsc"]
+sky_material = SubResource("PanoramaSkyMaterial_gwk0t")
+
+[sub_resource type="Environment" id="Environment_ravig"]
+background_mode = 2
+sky = SubResource("Sky_16fsc")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="StarsEnvironment" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ravig")
