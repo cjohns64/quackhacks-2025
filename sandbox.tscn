@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://w4awhwa35ma4"]
+[gd_scene load_steps=6 format=3 uid="uid://w4awhwa35ma4"]
 
 [ext_resource type="PackedScene" uid="uid://bd2dhg5c7cps" path="res://PlayerController.tscn" id="1_3h184"]
 [ext_resource type="PackedScene" path="res://stars_environment.tscn" id="1_cojph"]
 [ext_resource type="PackedScene" uid="uid://chtonxaegbo54" path="res://mainmenu.tscn" id="1_p7lbm"]
+[ext_resource type="AudioStream" uid="uid://fqvbhdyu8d3l" path="res://Audio/backgroundmusic.mp3" id="4_rvmsc"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_cojph"]
 
@@ -32,3 +33,8 @@ mesh = SubResource("SphereMesh_cojph")
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.20719)
 mesh = SubResource("SphereMesh_cojph")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rvmsc")
+autoplay = true
+parameters/looping = true
