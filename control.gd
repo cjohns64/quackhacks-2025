@@ -4,13 +4,18 @@ extends Control
 
 
 
-func _on_button_pressed() -> void:
+func _on_button_pressed() ->  void:
 	self.visible= false
-	pass # Replace with function body.
+	$click.play()
 	
 
 
 
 func _on_quitbutton_pressed() -> void:
 	get_tree().quit()
-	pass # Replace with function body.
+	pass 
+
+
+func _on_startbutton_mouse_entered() -> void:
+	$hover.play()
+	
