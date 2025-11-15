@@ -26,13 +26,14 @@ func initialize():
 	pass
 	
 func _physics_process(delta):
-	if is_dead:
-		return
+	pass
 		
 func dying():
 	is_dead = true
 	died.emit()
 	print("Died!")
+	queue_free()
+	
 		
 func take_damage(dmg: float):
 	current_health -= dmg
