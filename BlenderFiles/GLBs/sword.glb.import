@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ct4abdbrk7ooy"
-path="res://.godot/imported/ship_03.glb-f933a41ddf752e81d9b1e1bea4cf0460.scn"
+uid="uid://2mlybyu5mld3"
+path="res://.godot/imported/sword.glb-572836d3bcd1cee623cda36ac9914644.scn"
 
 [deps]
 
-source_file="res://BlenderFiles/GLBs/ship_03.glb"
-dest_files=["res://.godot/imported/ship_03.glb-f933a41ddf752e81d9b1e1bea4cf0460.scn"]
+source_file="res://BlenderFiles/GLBs/sword.glb"
+dest_files=["res://.godot/imported/sword.glb-572836d3bcd1cee623cda36ac9914644.scn"]
 
 [params]
 
