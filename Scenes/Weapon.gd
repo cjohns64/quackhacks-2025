@@ -1,12 +1,12 @@
 extends Node3D
 
 @export var fire_rate : float = 1.0
+@export var spawn_positions : Array[Vector3] = []
+@export var spawn_directions : Array[Vector3] = []
+@export var missile_object : PackedScene
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func Fire():
+	for i in range(len(spawn_positions)):
+		var new_missile = missile_object.instantiate()
+		new_missile.position = spawn_positions[i]
+		new_missile.rotation = spawn_directions[i]
