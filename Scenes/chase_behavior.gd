@@ -2,7 +2,7 @@ extends Node
 
 var enemy: Enemy
 
-var target_coords = EnemyManager.player_ship.coordinates
+var target_coords
 
 func _ready():
-	pass
+	target_coords = EnemyManager.player_ship.position
