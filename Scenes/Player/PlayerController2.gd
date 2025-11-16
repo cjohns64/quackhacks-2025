@@ -24,7 +24,6 @@ var smoothed_roll_input: float = 0.0
 var facing_direction : Vector3
 var canAct : bool = true
 
-# --- New variable for momentum ---
 var velocity: Vector3 = Vector3.ZERO # Replaces movement_direction
 
 var equipped_weapons = {}
@@ -39,55 +38,35 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	facing_direction = -transform.basis.z
 	
-	# --- 1. GET INPUT ---
 	var up_down = Input.get_axis("nose_down", "nose_up")
-
-	# --- 2. COMBINE & SMOOTH ROTATION ---
 	var target_pitch_input = mouse_y_input
 	var target_roll_input = mouse_x_input
 	
 	smoothed_pitch_input = lerp(smoothed_pitch_input, target_pitch_input, mouse_smoothing * delta)
 	smoothed_roll_input = lerp(smoothed_roll_input, target_roll_input, mouse_smoothing * delta)
-
-	# --- 3. APPLY ROTATION ---
+	
 	if abs(smoothed_pitch_input) > 0.001:
 		rotate_object_local(Vector3.RIGHT, smoothed_pitch_input * nose_rotation_speed * delta)
 	
 	if abs(smoothed_roll_input) > 0.001:
 		rotate_object_local(Vector3.FORWARD, -smoothed_roll_input * roll_rotation_speed * delta)
-
-	# --- 4. RESET MOUSE INPUT ---
+	
 	mouse_x_input = 0.0
 	mouse_y_input = 0.0
-
-	# --- 5. APPLY MOVEMENT & THROTTLE (Momentum-based) ---
 	
-	# Adjust the throttle value based on input
 	if up_down != 0:
 		throttle += up_down * throttle_change_rate * delta
 	
-	# Clamp the throttle valueww
 	throttle = clampf(throttle, throttle_min, throttle_max)
 	
-	# --- START: New Momentum Logic ---
-	
-	# 1. Calculate acceleration from thrust
-	# 'throttle' now acts as the force/acceleration amount
 	var acceleration: Vector3 = facing_direction * throttle
 	
-	# 2. Apply acceleration to our velocity (building momentum)
 	velocity += acceleration * delta
 	
-	# 3. Cap the velocity (momentum) to the ship's max_speed
-	# Vector3.limit_length() is perfect for this
 	velocity = velocity.limit_length(max_speed)
 	
-	# 4. Apply the final velocity to the ship's position
 	position += velocity * delta
 	
-	# --- END: New Momentum Logic ---
-	
-	# Fire weapons
 	FireWeapons(delta)
 
 
