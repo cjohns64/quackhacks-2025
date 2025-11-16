@@ -3,7 +3,7 @@ extends Node3D
 # hold enemies, types, etc.
 @export var ememy_types:Array[PackedScene] = []
 var spawn_range:float = 10
-@export var player_ship: Node3D
+var player_ship: Node3D
 var enemies_in_play = []
 
 # manage timers, spawning, stopping on menus

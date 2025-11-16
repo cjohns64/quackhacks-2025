@@ -1,15 +1,15 @@
 extends Node
 
 var enemy: EnemyGrunt
-
+var enemy_grunt: EnemyGrunt
 var target_coords: Vector3
 
 func _ready():
-	pass
+	enemy_grunt = self.get_parent() as EnemyGrunt
 	
 func move_to(delta):
-	var direction = (target_coords - self.get_parent().position)
-	var distance = delta * 0.000001 * self.get_parent().speed
+	var direction = (target_coords - enemy_grunt.position)
+	var distance = delta * enemy_grunt.speed
 	var move_vec = direction / (distance + 50)
 	self.get_parent().position += move_vec
 	
