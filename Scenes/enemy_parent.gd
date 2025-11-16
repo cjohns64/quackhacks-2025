@@ -1,5 +1,5 @@
 extends Node
-class_name Enemy
+class_name Enemy_Parent
 
 # signals
 signal died

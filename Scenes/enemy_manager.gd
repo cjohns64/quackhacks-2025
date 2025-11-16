@@ -35,7 +35,7 @@ var tmp:float = 0
 func _process(delta: float) -> void:
 	tmp += delta
 	if tmp > 1:
-		SpawnEnemy(randi_range(0, 1))
+		SpawnEnemy(randi_range(0, 0))
 		tmp = 0
 
 func _ready():

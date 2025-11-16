@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://da8pywxx2uxtx"]
 
 [ext_resource type="Script" uid="uid://cj00nltwhscyt" path="res://Scenes/enemy_manager.gd" id="1_xf0q5"]
-[ext_resource type="PackedScene" uid="uid://d2fclcdf2hwlt" path="res://Assets/enemy_ship_01.tscn" id="2_kqq1u"]
+[ext_resource type="PackedScene" uid="uid://bg488xrx7m4ag" path="res://Scenes/Enemies/enemy_grunt.tscn" id="2_kqq1u"]
 [ext_resource type="PackedScene" uid="uid://oruhk8s3cav1" path="res://Assets/enemy_ship_02.tscn" id="3_tfjdt"]
 
 [node name="EnemyManager" type="Node3D"]

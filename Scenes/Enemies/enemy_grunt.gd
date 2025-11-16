@@ -1,10 +1,9 @@
-extends Enemy
-class_name MeleeEnemy
+extends Enemy_Parent
+class_name EnemyGrunt
 
 func initialize():
 	max_health = 50.0
-	speed = 6.0
-	
+	speed = 0.1
 	# weapon and behavior are already set up as child nodes in the scene
 	# Just grab references if needed
 	if not weapon:
