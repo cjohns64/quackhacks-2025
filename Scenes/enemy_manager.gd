@@ -1,7 +1,7 @@
 extends Node3D
 
 # hold enemies, types, etc.
-@export var ememy_types:Array[PackedScene] = []
+@export var enemy_types:Array[PackedScene] = []
 var spawn_range:float = 10
 var player_ship: Node3D
 var enemies_in_play = []
@@ -25,7 +25,7 @@ func SpawnEnemy(enemy_index:int) -> void:
 	var spawn_pos:Vector3 = Vector3(x, y, z)
 	spawn_pos += player_ship.position
 	# spawn enemy
-	var newscene:Node3D = self.ememy_types[enemy_index].instantiate()
+	var newscene:Node3D = self.enemy_types[enemy_index].instantiate()
 	self.add_child(newscene)
 	enemies_in_play.append(newscene)
 	# update location

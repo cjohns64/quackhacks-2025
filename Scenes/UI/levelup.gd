@@ -4,10 +4,10 @@ extends Control
 # selection process
 
 var upgrade_options = [
-	{"name": "Increased Max Health", "description": "+20 Max HP", "stat": "playerhealth", "value": "20"},
-	{"name": "Faster Movement", "description": "+10% Speed"},
-	{"name": "Extra Damage", "description": "+15% Damage"},
-	{"name": "Attack Speed", "description": "+20% Attack Speed"},
+	{"name": "Increased Max Health", "description": "+20 Max HP", "stat": "player_health", "value": 20},
+	{"name": "Faster Movement", "description": "+10% Speed", "stat": "max_speed", "value": 0.10, "is_percent": true},
+	{"name": "Extra Damage", "description": "+15% Damage", "stat": "damage", "value": 0.15, "is_percent": true},
+	{"name": "Attack Speed", "description": "+20% Attack Speed", "stat": "fire_rate", "value": 0.20, "is_percent": true},
 ]
 
 func _input(event):
@@ -59,9 +59,39 @@ func create_upgrade_button(upgrade: Dictionary):
 
 func _on_upgrade_selected(upgrade_name: String):
 	print("Selected upgrade: ", upgrade_name)
+	
+	# Find the upgrade data
+	var upgrade_data = null
+	for upgrade in upgrade_options:
+		if upgrade["name"] == upgrade_name:
+			upgrade_data = upgrade
+			break
+	
+	if upgrade_data:
+		apply_upgrade(upgrade_data)
+	
 	upgrade_selected.emit(upgrade_name)
 	hide()
 	get_tree().paused = false
+
+func apply_upgrade(upgrade: Dictionary):
+	var player = get_node("/root/Sandbox/PlayerShip")
+	if not player:
+		print("Error: Not player")
+		return
+	
+	var stat = upgrade["stat"]
+	var value = upgrade["value"]
+	var is_percent = upgrade.get("is_percent", false)
+	
+	if is_percent:
+		# Multiply current stat by percentage
+		player.set(stat, player.get(stat) * (1 + value))
+	else:
+		# Add flat value
+		player.set(stat, player.get(stat) + value)
+	
+	print("Applied ", upgrade["name"], " to player")
 	
 func clear_buttons():
 	for child in button_container.get_children():
