@@ -5,11 +5,13 @@ class_name Missile
 @export var movement_speed : float = 1.0
 @export var damageAmount : float = 100.0
 @export var acceleration : float = 0.0
-@export var life_time : float = 5.0
+@export var life_time : float = 3.0
 
 var currentTarget
 var startPosition
+var siloObject
 var timer = 0.0
+var reachedInitial = false
 # @export var sound_effect : Audio
 # @export var particle_effect : GPUParticles3D
 
@@ -43,8 +45,17 @@ func _on_body_entered(body: Node3D) -> void:
 
 func MissileBehavior(delta):
 	timer += delta
-	if currentTarget:
-		position = lerp(startPosition, currentTarget.position, timer / life_time)
-		look_at(currentTarget.position)
+	
+	if !reachedInitial:
+		position = lerp(startPosition, startPosition + Vector3.UP, timer)
+		look_at(startPosition + siloObject.transform.basis.y)
+		if timer > 1.0:
+			reachedInitial = true
+			startPosition = position
+			timer = 0.0
 	else:
-		position += -transform.basis.z * delta
+		if currentTarget:
+			position = lerp(startPosition, currentTarget.position, timer / life_time)
+			look_at(currentTarget.position)
+		else:
+			position += -transform.basis.z * delta

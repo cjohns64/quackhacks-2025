@@ -1,4 +1,5 @@
 extends Node3D
+class_name PlayerController
 
 @export_category("Plugging In Nodes")
 
@@ -83,9 +84,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		mouse_y_input = -mouse_motion_event.relative.y * mouse_sensitivity
 		mouse_x_input = -mouse_motion_event.relative.x * mouse_sensitivity
 
-func EquipWeapon(newWeapon : Weapon):
+func EquipWeapon(newWeapon : Node3D):
+	print(newWeapon)
 	equipped_weapons.append(newWeapon)
-	newWeapon.position = position
+	newWeapon.position = Vector3.ZERO
 	newWeapon.rotation = rotation
 	add_child(newWeapon)
 

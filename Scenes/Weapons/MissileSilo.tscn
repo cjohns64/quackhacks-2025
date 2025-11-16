@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://sek0oui3bfaq"]
+
+[ext_resource type="Script" uid="uid://dni51dnec61nn" path="res://Scenes/Weapons/missile_silo.gd" id="1_3o7pc"]
+[ext_resource type="PackedScene" uid="uid://deuyk7c48o36t" path="res://Scenes/Weapons/Missile.tscn" id="2_mj7io"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mj7io"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3jfl7"]
+material = SubResource("StandardMaterial3D_mj7io")
+
+[node name="MissileSilo" type="Node3D"]
+script = ExtResource("1_3o7pc")
+missile_object = ExtResource("2_mj7io")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_3jfl7")
