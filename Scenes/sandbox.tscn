@@ -45,5 +45,4 @@ autoplay = true
 parameters/looping = true
 
 [node name="Pausemenu" parent="." instance=ExtResource("5_1cu7a")]
-process_mode = 3
 visible = false
