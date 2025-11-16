@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsy7m6hgucriu"]
+[gd_scene load_steps=11 format=3 uid="uid://k1ilv66v2q2m"]
 
 [ext_resource type="PackedScene" uid="uid://bd2dhg5c7cps" path="res://Scenes/Player/PlayerController.tscn" id="1_3h184"]
 [ext_resource type="Script" path="res://Scenes/healthlabel.gd" id="1_6yop6"]
 [ext_resource type="PackedScene" uid="uid://dkel3gcb3p1k0" path="res://Scenes/Environment/stars_environment.tscn" id="1_cojph"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/levelup.tscn" id="1_koc8j"]
+[ext_resource type="PackedScene" uid="uid://cakffvppwgksy" path="res://Scenes/UI/levelup.tscn" id="1_koc8j"]
 [ext_resource type="PackedScene" uid="uid://chtonxaegbo54" path="res://Scenes/UI/mainmenu.tscn" id="1_p7lbm"]
 [ext_resource type="Script" path="res://Scenes/scorelabel.gd" id="1_wpw8k"]
 [ext_resource type="Script" path="res://Scenes/levellabel.gd" id="2_s5h6m"]
@@ -62,6 +62,8 @@ process_mode = 3
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.63913, -0.434526, 0.634586, 0, 0.825104, 0.564981, -0.769098, -0.361097, 0.527349, 0, 0, 0)
 
+[node name="PlayerShip" parent="." instance=ExtResource("1_3h184")]
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23159, 1.49884, 2.34583)
 mesh = SubResource("SphereMesh_cojph")
@@ -73,8 +75,6 @@ mesh = SubResource("SphereMesh_cojph")
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.96178, 4.81895, 10.4911)
 mesh = SubResource("SphereMesh_cojph")
-
-[node name="PlayerShip" parent="." instance=ExtResource("1_3h184")]
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.20719)

@@ -30,7 +30,6 @@ func _physics_process(delta):
 
 func dying():
 	is_dead = true
-	died.emit()
 	print("Died!")
 	queue_free()
 	

@@ -15,4 +15,5 @@ script = ExtResource("2_hc67y")
 
 [node name="EnemyCollision" parent="." instance=ExtResource("4_6qxsy")]
 
+[connection signal="damaged" from="EnemyCollision" to="." method="_on_enemy_collision_damaged"]
 [connection signal="destroyed" from="EnemyCollision" to="." method="_on_enemy_collision_destroyed"]
