@@ -89,14 +89,15 @@ func FireWeapons(delta):
 
 func _on_body_3d_body_entered(body: Node) -> void:
 	# player Dead
-	Globalhealthscript.health -= 10
+	
 	if Globalhealthscript.health <= -10:
 		print(Globalhealthscript.health)
-		get_tree().paused= true
-		show()
-		(body.get_parent().destroyed.emit())
 		queue_free()
-		player_killed.emit()
+		get_tree().paused= true
+		
+		(body.get_parent().destroyed.emit())
+		
+		
 	
 	
 	

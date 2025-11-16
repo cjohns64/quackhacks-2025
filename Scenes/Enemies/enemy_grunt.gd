@@ -6,7 +6,7 @@ func initialize():
 	
 	
 	max_health = 50.0
-	speed = 15
+	speed = 30
 	
 	# weapon and behavior are already set up as child nodes in the scene
 	# Just grab references if needed
@@ -25,6 +25,8 @@ func _on_enemy_collision_destroyed() -> void:
 	queue_free()
 
 
-func _on_enemy_collision_damaged(dmg: float) -> void:
-	damage -= Globalhealthscript.health
-	super.take_damage(dmg)
+func _on_enemy_collision_damaged(damage: float) -> void:
+	Globalpointscript.score += 10
+	Globalhealthscript.health -=10
+	
+	super.take_damage(damage)
