@@ -25,13 +25,6 @@ signal upgrade_selected(upgrade_name: String)
 
 func _ready():
 	# hide by default
-	custom_minimum_size = Vector2(600, 400)
-	position = Vector2(400, 200)
-	var style = StyleBoxFlat.new()
-	style.bg_color = Color(0.933, 0.102, 0.2, 1.0)
-	style.border_color = Color(0.8, 0.6, 0.2)
-	style.set_border_width_all(3)
-	add_theme_stylebox_override("panel", style)
 	hide()
 
 func show_level_up_menu():
@@ -50,6 +43,21 @@ func create_upgrade_button(upgrade: Dictionary):
 	var button = Button.new()
 	button.text = upgrade["name"] + "\n" + upgrade["description"]
 	button.custom_minimum_size = Vector2(800, 200)
+	
+	# normal style
+	var button_style = StyleBoxFlat.new()
+	button_style.bg_color = Color(0.695, 0.209, 0.682, 1.0)  # Blue-ish
+	button_style.set_border_width_all(2)
+	button_style.border_color = Color(0.612, 0.85, 0.874, 1.0)
+	button.add_theme_stylebox_override("normal", button_style)
+
+	# hover style
+	var hover_style = StyleBoxFlat.new()
+	hover_style.bg_color = Color(0.8, 0.3, 0.8, 1.0)  # Lighter purple on hover
+	hover_style.set_border_width_all(2)
+	hover_style.border_color = Color(1.0, 1.0, 0.0, 1.0)  # Yellow border
+	button.add_theme_stylebox_override("hover", hover_style)
+
 	button.pressed.connect(_on_upgrade_selected.bind(upgrade["name"]))
 	button_container.add_child(button)
 
