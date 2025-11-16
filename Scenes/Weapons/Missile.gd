@@ -33,9 +33,11 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node3D) -> void:
-	print(body.get_groups())
+	#print(body.get_groups())
 	if body.is_in_group("Enemies"):
-		body.DamageEnemy(damageAmount)
+		var player = EnemyManager.player_ship
+		var newDamage = player.modify_damage * damageAmount
+		body.DamageEnemy(newDamage)
 		# Deploy particle effect and sound
 		queue_free()
 

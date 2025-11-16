@@ -4,10 +4,10 @@ extends Control
 # selection process
 
 var upgrade_options = [
-	{"name": "Increased Max Health", "description": "+20 Max HP", "stat": "player_health", "value": 20},
+	{"name": "Increased Max Health", "description": "+20 Max HP", "stat": "Globalhealthscript.health", "value": 20},
 	{"name": "Faster Movement", "description": "+10% Speed", "stat": "max_speed", "value": 0.10, "is_percent": true},
 	{"name": "Extra Damage", "description": "+15% Damage", "stat": "modify_damage", "value": 0.15, "is_percent": true},
-	{"name": "Attack Speed", "description": "+20% Attack Speed", "stat": "modify_fire_rate", "value": 0.20, "is_percent": true},
+	#{"name": "Attack Speed", "description": "+20% Attack Speed", "stat": "modify_fire_rate", "value": 0.20, "is_percent": true},
 ]
 
 func _input(event):
@@ -27,6 +27,7 @@ func show_level_up_menu():
 	clear_buttons()
 	get_tree().paused = true
 	generate_random_options(3)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	show()
 
 func generate_random_options(n: int):
@@ -72,6 +73,7 @@ func _on_upgrade_selected(upgrade_name: String):
 	
 	upgrade_selected.emit(upgrade_name)
 	hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
 
 func apply_upgrade(upgrade: Dictionary):
@@ -80,6 +82,15 @@ func apply_upgrade(upgrade: Dictionary):
 		print("Error: Not player")
 		return
 	
+	print("DEBUG: Player node found: ", player)
+	print("DEBUG: Player script: ", player.get_script())
+	
+	# Try to list all properties
+	print("DEBUG: Player has these properties:")
+	for prop in player.get_property_list():
+		if prop.usage & PROPERTY_USAGE_SCRIPT_VARIABLE:
+			print("  - ", prop.name, " = ", player.get(prop.name))
+	
 	var stat = upgrade["stat"]
 	var value = upgrade["value"]
 	var is_percent = upgrade.get("is_percent", false)
@@ -87,6 +98,14 @@ func apply_upgrade(upgrade: Dictionary):
 	print("Trying to modify stat: ", stat)
 	print("Current value: ", player.get(stat))
 	print("New value to add: ", value)
+	
+	if stat == "Globalhealthscript.health":
+		if is_percent:
+			Globalhealthscript.health = Globalhealthscript.health * (1 + value)
+		else:
+			Globalhealthscript.health += value
+		print("Applied ", upgrade["name"], " - new health: ", Globalhealthscript.health)
+		return
 	
 	if is_percent:
 		var current_val = player.get(stat)
