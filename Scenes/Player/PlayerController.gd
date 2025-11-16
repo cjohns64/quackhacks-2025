@@ -32,10 +32,6 @@ var equipped_weapons = {}
 var equipped_passives = []
 
 
-func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-
 func _process(delta: float) -> void:
 	facing_direction = -transform.basis.z
 	
@@ -98,8 +94,6 @@ func _on_body_3d_body_entered(body: Node) -> void:
 		get_tree().paused= true
 		
 		(body.get_parent().destroyed.emit())
-		
-		
 	
 	
 	
