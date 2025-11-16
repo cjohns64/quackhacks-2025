@@ -8,8 +8,10 @@ signal died
 @export_group("Stats")
 @export var max_health: float = 30.0
 @export var speed: float = 5.0
+@export var damage: int = 10
 
 # stats
+
 var pointvalue: int= 100
 var current_health: float
 var is_dead: bool = false

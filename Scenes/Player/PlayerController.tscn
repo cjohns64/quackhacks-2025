@@ -1,17 +1,108 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd2dhg5c7cps"]
+[gd_scene load_steps=7 format=3 uid="uid://bd2dhg5c7cps"]
 
-[ext_resource type="Script" path="res://Scenes/Player/PlayerController2.gd" id="1_abx53"]
 [ext_resource type="PackedScene" uid="uid://bv2oii3anjsyg" path="res://Assets/player_ship.tscn" id="2_3mwrl"]
 [ext_resource type="PackedScene" uid="uid://4tgy7edoskwo" path="res://Scenes/Weapons/laser.tscn" id="2_abx53"]
 [ext_resource type="AudioStream" uid="uid://l405xqglb7et" path="res://Audio/autocannon.mp3" id="3_y00gc"]
 [ext_resource type="PackedScene" uid="uid://cglqs8ofn7x8h" path="res://Scenes/Weapons/weapon_sword.tscn" id="4_abx53"]
 
+[sub_resource type="GDScript" id="GDScript_abx53"]
+script/source = "extends Node3D
+
+@export_category(\"Plugging In Nodes\")
+
+@export_category(\"Game Rules\")
+@export var throttle : float = 1.0
+@export var throttle_change_rate : float = 1.0
+@export var throttle_min : float = 0.0
+@export var throttle_max : float = 1.0
+@export var max_speed : float = 5 # This variable is now used
+@export var player_health : float = 100.0
+@export var nose_rotation_speed : float = 1.0
+@export var roll_rotation_speed : float = 1.0
+
+@export_category(\"Mouse Controls\")
+@export var mouse_sensitivity : float = 0.5
+@export var mouse_smoothing : float = 15.0 
+
+var mouse_x_input: float = 0.0
+var mouse_y_input: float = 0.0
+var smoothed_pitch_input: float = 0.0
+var smoothed_roll_input: float = 0.0
+
+var facing_direction : Vector3
+var canAct : bool = true
+
+var velocity: Vector3 = Vector3.ZERO # Replaces movement_direction
+
+var equipped_weapons = {}
+var equipped_passives = []
+
+
+func _ready() -> void:
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pass
+
+
+func _process(delta: float) -> void:
+	facing_direction = -transform.basis.z
+	
+	var up_down = Input.get_axis(\"nose_down\", \"nose_up\")
+	var target_pitch_input = mouse_y_input
+	var target_roll_input = mouse_x_input
+	
+	smoothed_pitch_input = lerp(smoothed_pitch_input, target_pitch_input, mouse_smoothing * delta)
+	smoothed_roll_input = lerp(smoothed_roll_input, target_roll_input, mouse_smoothing * delta)
+	
+	if abs(smoothed_pitch_input) > 0.001:
+		rotate_object_local(Vector3.RIGHT, smoothed_pitch_input * nose_rotation_speed * delta)
+	
+	if abs(smoothed_roll_input) > 0.001:
+		rotate_object_local(Vector3.FORWARD, -smoothed_roll_input * roll_rotation_speed * delta)
+	
+	mouse_x_input = 0.0
+	mouse_y_input = 0.0
+	
+	if up_down != 0:
+		throttle += up_down * throttle_change_rate * delta
+	
+	throttle = clampf(throttle, -throttle_max, throttle_max)
+	
+	var acceleration: Vector3 = facing_direction * throttle
+	
+	velocity += acceleration * delta
+	
+	velocity = velocity.limit_length(max_speed)
+	
+	position += velocity * delta
+	
+	FireWeapons(delta)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		var mouse_motion_event: InputEventMouseMotion = event as InputEventMouseMotion
+		mouse_y_input = -mouse_motion_event.relative.y * mouse_sensitivity
+		mouse_x_input = -mouse_motion_event.relative.x * mouse_sensitivity
+
+
+func FireWeapons(delta):
+	for weapon in equipped_weapons.keys():
+		var currentTimer = equipped_weapons[weapon]
+		currentTimer += delta
+		if currentTimer > weapon.fireRate:
+			weapon.Fire()
+			equipped_weapons[weapon] = 0
+		else:
+			equipped_weapons[weapon] = currentTimer
+"
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_2rbph"]
 
 [node name="PlayerShip" type="Node3D"]
-script = ExtResource("1_abx53")
+script = SubResource("GDScript_abx53")
 
 [node name="laser" parent="." instance=ExtResource("2_abx53")]
+visible = false
 
 [node name="PlayerShipModel" parent="." instance=ExtResource("2_3mwrl")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -31,5 +122,6 @@ max_contacts_reported = 1
 shape = SubResource("SphereShape3D_2rbph")
 
 [node name="WeaponSword" parent="." instance=ExtResource("4_abx53")]
+visible = false
 
 [connection signal="body_entered" from="Body3D" to="." method="_on_body_3d_body_entered"]
