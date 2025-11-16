@@ -27,7 +27,7 @@ func initialize():
 	
 func _physics_process(delta):
 	pass
-		
+
 func dying():
 	is_dead = true
 	died.emit()

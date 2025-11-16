@@ -9,6 +9,10 @@ class_name Missile
 # @export var sound_effect : Audio
 # @export var particle_effect : GPUParticles3D
 
+# will have issue that enemies shoot themselves
+# so need to have shoot parameter specifying target
+# and adjust for enemy vs player shooting
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Play noise
