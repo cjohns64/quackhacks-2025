@@ -19,3 +19,7 @@ func dying():
 
 func _on_enemy_collision_destroyed() -> void:
 	queue_free()
+
+
+func _on_enemy_collision_damaged(dmg: float) -> void:
+	super.take_damage(dmg)

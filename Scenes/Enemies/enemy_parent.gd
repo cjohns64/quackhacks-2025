@@ -28,9 +28,8 @@ func initialize():
 	
 func dying():
 	is_dead = true
-	Globalpointscript.score +=pointvalue
-	
-	died.emit()
+
+
 	print("Died!")
 	queue_free()
 	
