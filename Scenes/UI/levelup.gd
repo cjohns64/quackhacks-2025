@@ -30,8 +30,8 @@ func _ready():
 	{"name": "Extra Damage", "description": "+15% Damage", "stat": "modify_damage", "value": 0.15, "is_percent": true, "is_weapon" : false},
 	{"name": "Attack Speed", "description": "+20% Attack Speed", "stat": "modify_fire_rate", "value": 0.20, "is_percent": true, "is_weapon" : false},
 	{"name": "Energy Sword", "description": "A rotating beam sword", "is_weapon" : true, "object" : beam_sword, "amount": 0},
-	{"name": "Missile Silos", "description": "Seek and destroy", "is_weapon" : true, "object" : missile_silo, "amount": 0},
-	{"name": "Laser Beam", "description": "Y = mX + b", "is_weapon" : true, "object" : laser, "amount": 0}
+	{"name": "Missile Silos", "description": "Seek and destroy", "is_weapon" : true, "object" : missile_silo, "amount": 0}
+	# {"name": "Laser Beam", "description": "Y = mX + b", "is_weapon" : true, "object" : laser, "amount": 0}
 	]
 	player = EnemyManager.player_ship
 	# hide by default
@@ -129,7 +129,7 @@ func apply_upgrade(upgrade: Dictionary):
 				print("ERROR: Value is null!")
 				return
 			# Multiply current stat by percentage
-			player.set(stat, current_val * (1 + value))
+			player.set(stat, current_val * (1 - value))
 		else:
 			# Add flat value
 			player.set(stat, player.get(stat) + value)
