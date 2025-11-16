@@ -27,6 +27,7 @@ func show_level_up_menu():
 	clear_buttons()
 	get_tree().paused = true
 	generate_random_options(3)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	show()
 
 func generate_random_options(n: int):
@@ -72,6 +73,7 @@ func _on_upgrade_selected(upgrade_name: String):
 	
 	upgrade_selected.emit(upgrade_name)
 	hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
 
 func apply_upgrade(upgrade: Dictionary):
