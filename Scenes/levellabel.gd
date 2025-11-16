@@ -8,5 +8,5 @@ func level_up():
 func _process(delta):
 	# Access the global score and set the label's text
 	text = "Level: " + str(Globallevelscript.level)
-	if Globallevelscript.level * 100 < Globalpointscript.score:
+	if Globallevelscript.level * 100 <= Globalpointscript.score:
 		level_up()
