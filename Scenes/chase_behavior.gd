@@ -3,12 +3,16 @@ extends Node
 var enemy: EnemyGrunt
 var enemy_grunt: EnemyGrunt
 var target_coords: Vector3
+var collision_margin:float = 1
 
 func _ready():
 	enemy_grunt = self.get_parent() as EnemyGrunt
 	
 func move_to(delta):
 	var direction:Vector3 = (target_coords - enemy_grunt.position)
+	if direction.dot(direction) < collision_margin:
+		self.get_parent().dying()
+		return
 	direction = direction.normalized()
 	var distance:float = delta * enemy_grunt.speed * 0.1
 	var move_vec:Vector3 = direction * distance

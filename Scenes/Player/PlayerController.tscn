@@ -24,8 +24,9 @@ stream = ExtResource("3_y00gc")
 volume_db = -15.928
 
 [node name="Body3D" type="RigidBody3D" parent="."]
+continuous_cd = true
 contact_monitor = true
-max_contacts_reported = 1
+max_contacts_reported = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body3D"]
 shape = SubResource("SphereShape3D_2rbph")
