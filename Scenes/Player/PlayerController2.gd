@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 	if up_down != 0:
 		throttle += up_down * throttle_change_rate * delta
 	
-	throttle = clampf(throttle, throttle_min, throttle_max)
+	throttle = clampf(throttle, -throttle_max, throttle_max)
 	
 	var acceleration: Vector3 = facing_direction * throttle
 	
