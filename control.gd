@@ -16,6 +16,7 @@ func _on_button_pressed() ->  void:
 	
 	get_tree().paused= false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	get_tree().reload_current_scene()
 	self.visible= false
 	$click.play()
 	
