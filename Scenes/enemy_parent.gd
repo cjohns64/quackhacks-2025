@@ -33,6 +33,7 @@ func dying():
 	died.emit()
 	print("Died!")
 	queue_free()
+	
 		
 func take_damage(dmg: float):
 	current_health -= dmg

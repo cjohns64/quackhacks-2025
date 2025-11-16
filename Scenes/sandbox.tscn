@@ -1,20 +1,10 @@
-<<<<<<< Updated upstream:Scenes/sandbox.tscn
 [gd_scene load_steps=7 format=3 uid="uid://bq36ahy3qm7ev"]
 
 [ext_resource type="PackedScene" uid="uid://bd2dhg5c7cps" path="res://PlayerController.tscn" id="1_3h184"]
 [ext_resource type="PackedScene" uid="uid://dkel3gcb3p1k0" path="res://stars_environment.tscn" id="1_cojph"]
 [ext_resource type="PackedScene" uid="uid://chtonxaegbo54" path="res://mainmenu.tscn" id="1_p7lbm"]
 [ext_resource type="PackedScene" uid="uid://da8pywxx2uxtx" path="res://Scenes/enemy_manager.tscn" id="4_rjrbw"]
-=======
-[gd_scene load_steps=8 format=3 uid="uid://dsy7m6hgucriu"]
-
-[ext_resource type="PackedScene" uid="uid://bd2dhg5c7cps" path="res://PlayerController.tscn" id="1_3h184"]
-[ext_resource type="PackedScene" path="res://stars_environment.tscn" id="1_cojph"]
-[ext_resource type="PackedScene" uid="uid://chtonxaegbo54" path="res://mainmenu.tscn" id="1_p7lbm"]
->>>>>>> Stashed changes:sandbox.tscn
 [ext_resource type="AudioStream" uid="uid://fqvbhdyu8d3l" path="res://Audio/backgroundmusic.mp3" id="4_rvmsc"]
-[ext_resource type="Script" uid="uid://b4l44vebbossq" path="res://Scenes/enemy_grunt.gd" id="5_ypj6x"]
-[ext_resource type="Script" uid="uid://cy3uwfqku0nof" path="res://Scenes/enemy_parent.gd" id="6_44b12"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_cojph"]
 
@@ -50,13 +40,5 @@ stream = ExtResource("4_rvmsc")
 autoplay = true
 parameters/looping = true
 
-<<<<<<< Updated upstream:Scenes/sandbox.tscn
 [node name="EnemyManager" parent="." node_paths=PackedStringArray("player_ship") instance=ExtResource("4_rjrbw")]
 player_ship = NodePath("../PlayerShip")
-=======
-[node name="EnemyGrunt" type="Node" parent="."]
-script = ExtResource("5_ypj6x")
-
-[node name="EnemyParent" type="Node3D" parent="."]
-script = ExtResource("6_44b12")
->>>>>>> Stashed changes:sandbox.tscn
