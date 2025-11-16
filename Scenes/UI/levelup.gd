@@ -25,7 +25,13 @@ signal upgrade_selected(upgrade_name: String)
 
 func _ready():
 	# hide by default
-	print("level up exists")
+	custom_minimum_size = Vector2(600, 400)
+	position = Vector2(400, 200)
+	var style = StyleBoxFlat.new()
+	style.bg_color = Color(0.933, 0.102, 0.2, 1.0)
+	style.border_color = Color(0.8, 0.6, 0.2)
+	style.set_border_width_all(3)
+	add_theme_stylebox_override("panel", style)
 	hide()
 
 func show_level_up_menu():
@@ -43,7 +49,7 @@ func generate_random_options(n: int):
 func create_upgrade_button(upgrade: Dictionary):
 	var button = Button.new()
 	button.text = upgrade["name"] + "\n" + upgrade["description"]
-	button.custom_minimum_size = Vector2(300, 80)
+	button.custom_minimum_size = Vector2(800, 200)
 	button.pressed.connect(_on_upgrade_selected.bind(upgrade["name"]))
 	button_container.add_child(button)
 
