@@ -27,6 +27,6 @@ func _on_enemy_collision_destroyed() -> void:
 
 func _on_enemy_collision_damaged(damage: float) -> void:
 	Globalpointscript.score += 10
-	Globalhealthscript.health -=10
+	
 	
 	super.take_damage(damage)
