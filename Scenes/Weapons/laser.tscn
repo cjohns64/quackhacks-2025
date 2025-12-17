@@ -1,12 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://4tgy7edoskwo"]
 
 [ext_resource type="Script" uid="uid://dqwnxwyj3n6l2" path="res://Scenes/Weapons/laser.gd" id="1_ffbre"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5h6m"]
-albedo_color = Color(0.15888548, 0.47427785, 0.80412936, 1)
-emission_enabled = true
-emission = Color(0.13306406, 0.36872226, 0.9999984, 1)
-emission_energy_multiplier = 10.67
+[ext_resource type="Material" uid="uid://ojdssfsq7y1q" path="res://Scenes/Weapons/laser-mat.tres" id="2_6u4cp"]
 
 [node name="laser" type="Node3D"]
 script = ExtResource("1_ffbre")
@@ -19,4 +14,4 @@ collision_mask = 2
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, -4.371139e-09, 0.1, 0, -0.1, -4.371139e-09, 0, -6.808722e-08, -5.4505105)
 height = 100.0
-material = SubResource("StandardMaterial3D_s5h6m")
+material = ExtResource("2_6u4cp")

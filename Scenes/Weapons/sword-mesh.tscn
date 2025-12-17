@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyw258n6bjex6"]
+
+[ext_resource type="PackedScene" uid="uid://2mlybyu5mld3" path="res://BlenderFiles/GLBs/sword.glb" id="1_8qt6l"]
+[ext_resource type="Material" uid="uid://ojdssfsq7y1q" path="res://Scenes/Weapons/laser-mat.tres" id="2_mvb8v"]
+
+[node name="sword" instance=ExtResource("1_8qt6l")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_mvb8v")
