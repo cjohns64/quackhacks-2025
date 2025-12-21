@@ -1,38 +1,41 @@
 extends Control
-@export var mainscene = "res://sandbox.tscn"
+@export var mainscene: String = "res://sandbox.tscn"
+@export var can_pause: bool = false
 
+func _ready() -> void:
+	hide()
 
-func _input(event):
+func _input(event: InputEvent) -> void:
+	if not can_pause:
+		return
+
+	# IMPORTANT: ignore key-repeat (echo) so ESC doesn't toggle twice
+	if event is InputEventKey and event.echo:
+		return
+
 	if event.is_action_pressed("pause"):
 		toggle_pause_menu()
-		
 
-func toggle_pause_menu():
-	var new_state= not get_tree().paused
-	print(visible)
-	if visible:
-		self.hide()
+func toggle_pause_menu() -> void:
+	# Toggle using the ACTUAL paused state (not visible)
+	if get_tree().paused:
+		# UNPAUSE
+		get_tree().paused = false
+		hide()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	else:
-		self.show()
+		# PAUSE
+		get_tree().paused = true
+		show()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	get_tree().paused = new_state
-
 
 func _on_resume_pressed() -> void:
-	get_tree().paused= false
+	get_tree().paused = false
+	hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	self.visible= false
-	
-	
-
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
-	pass 
-	
-
-
 
 func _on_quit_mouse_entered() -> void:
 	$hover.play()

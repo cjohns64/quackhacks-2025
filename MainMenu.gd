@@ -5,15 +5,18 @@ extends Control
 
 
 
+
 func _ready():
 	
 	get_tree().paused= true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$"../Pausemenu".can_pause = false
+	$"../Pausemenu".hide()
 	
 
 
 func _on_button_pressed() ->  void:
-	
+	$"../Pausemenu".can_pause = true
 	get_tree().paused= false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	EnemyManager._ready()
