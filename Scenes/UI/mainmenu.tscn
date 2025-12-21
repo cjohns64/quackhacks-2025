@@ -8,7 +8,7 @@
 [sub_resource type="Theme" id="Theme_4mgpv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2nv2"]
-bg_color = Color(0.9372549, 0.35686275, 0, 1)
+bg_color = Color(0.938266, 0.355157, 0.634376, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -27,57 +27,37 @@ script = ExtResource("1_cmhrf")
 [node name="startbutton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.038000003
-anchor_top = 0.634
-anchor_right = 0.21300001
-anchor_bottom = 0.75200003
-offset_left = -8.776001
-offset_top = 0.16799927
-offset_right = 9.623978
-offset_bottom = -0.2960205
+anchor_left = 0.036
+anchor_top = 0.674
+anchor_right = 0.251
+anchor_bottom = 0.802
+offset_left = 0.527996
+offset_top = 0.247986
+offset_right = -0.152008
+offset_bottom = 0.303955
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_4mgpv")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.513726, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_d2nv2")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_d2nv2")
 text = "Start"
 
-[node name="settingsbutton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.033
-anchor_top = 0.651
-anchor_right = 0.201
-anchor_bottom = 0.73300004
-offset_left = -6.015999
-offset_top = 71.15198
-offset_right = 26.447998
-offset_bottom = 94.01596
-grow_horizontal = 2
-grow_vertical = 0
-theme = SubResource("Theme_4mgpv")
-theme_override_colors/font_color = Color(0.03137255, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_d2nv2")
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxFlat_d2nv2")
-text = "Settings"
-
 [node name="quitbutton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.036000002
-anchor_top = 0.88600004
-anchor_right = 0.216
-anchor_bottom = 0.9850001
-offset_left = -9.472004
-offset_top = -0.12805176
-offset_right = 9.167999
-offset_bottom = -0.2800293
+anchor_left = 0.033
+anchor_top = 0.846
+anchor_right = 0.253
+anchor_bottom = 0.978
+offset_left = -0.0159988
+offset_top = -0.208008
+offset_right = 0.543976
+offset_bottom = -4.74402
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0.050980393, 0, 1)
+theme_override_colors/font_color = Color(0.580615, 0.0519404, 0.322269, 1)
 theme_override_fonts/font = ExtResource("2_d2nv2")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_d2nv2")
@@ -96,9 +76,10 @@ offset_top = 22.76
 offset_right = -2.16003
 offset_bottom = 24.008
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.9529412, 0.019607844, 0, 1)
+theme_override_colors/font_color = Color(0.0627451, 1, 0, 1)
 theme_override_fonts/font = ExtResource("2_d2nv2")
 theme_override_font_sizes/font_size = 143
+theme_override_styles/normal = SubResource("StyleBoxFlat_d2nv2")
 text = "Space Survivor"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -111,8 +92,6 @@ stream = ExtResource("4_3pujl")
 
 [connection signal="mouse_entered" from="startbutton" to="." method="_on_startbutton_mouse_entered"]
 [connection signal="pressed" from="startbutton" to="." method="_on_button_pressed"]
-[connection signal="mouse_entered" from="settingsbutton" to="." method="_on_startbutton_mouse_entered"]
-[connection signal="pressed" from="settingsbutton" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="quitbutton" to="." method="_on_startbutton_mouse_entered"]
 [connection signal="pressed" from="quitbutton" to="." method="_on_quitbutton_pressed"]
 [connection signal="pressed" from="quitbutton" to="." method="_on_button_pressed"]

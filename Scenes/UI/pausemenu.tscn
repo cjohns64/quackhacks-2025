@@ -7,7 +7,6 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w30yk"]
 bg_color = Color(0.578237, 0.615574, 0.544154, 1)
-draw_center = false
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -15,7 +14,6 @@ corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ymp2i"]
 bg_color = Color(0.703024, 0.552679, 0.603204, 1)
-draw_center = false
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -23,7 +21,6 @@ corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03qeq"]
 bg_color = Color(0.890924, 0.407875, 0.640467, 1)
-draw_center = false
 
 [node name="Pausemenu" type="Control"]
 process_mode = 3
@@ -38,17 +35,17 @@ script = ExtResource("1_rp7hy")
 [node name="Resume" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.23300001
+anchor_left = 0.217
 anchor_top = 0.429
-anchor_right = 0.73600006
-anchor_bottom = 0.586
-offset_left = -0.41601563
-offset_top = -5.9920044
-offset_right = 0.12792969
-offset_bottom = 0.27197266
+anchor_right = 0.72
+anchor_bottom = 0.596
+offset_left = 0.0159912
+offset_top = 0.00799561
+offset_right = 0.559937
+offset_bottom = -0.208008
 theme_override_colors/font_color = Color(0.819608, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ng1wx")
-theme_override_font_sizes/font_size = 109
+theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_w30yk")
 text = "Resume"
 
@@ -62,13 +59,13 @@ anchor_bottom = 0.914
 offset_top = -0.279999
 offset_right = -0.223999
 offset_bottom = -0.272034
-theme_override_colors/font_color = Color(0.92156863, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ng1wx")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_ymp2i")
 text = "QUIT"
 
-[node name="Pausetitle" type="Button" parent="."]
+[node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.997

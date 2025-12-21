@@ -1,19 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://byfeaogxqcm8v"]
+[gd_scene load_steps=6 format=3 uid="uid://byfeaogxqcm8v"]
 
-[ext_resource type="Script" path="res://GameOver.gd" id="1_y27vy"]
+[ext_resource type="Script" uid="uid://da7p03wnsvt6a" path="res://GameOver.gd" id="1_y27vy"]
 [ext_resource type="FontFile" uid="uid://jbbxmrffrxqq" path="res://Assets/Fonts/m5x7.ttf" id="2_vv0a8"]
 [ext_resource type="AudioStream" uid="uid://q6iylgd1j0a2" path="res://Audio/buttonpress.mp3" id="3_gkmbd"]
 [ext_resource type="AudioStream" uid="uid://vdd7r2c04aob" path="res://Audio/hover-button-287656.mp3" id="4_x1u24"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2nv2"]
-bg_color = Color(0.9372549, 0.35686275, 0.007843138, 1)
+bg_color = Color(0.938266, 0.355157, 0.634376, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_offset = Vector2(0, 3.5)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y27vy"]
 
 [node name="gameover" type="Control"]
 process_mode = 2
@@ -37,7 +35,7 @@ offset_top = -0.0559998
 offset_right = -0.0400391
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.513726, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_vv0a8")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_d2nv2")
@@ -56,7 +54,7 @@ offset_right = 0.239929
 offset_bottom = -0.135986
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0.03529412, 0.023529412, 1)
+theme_override_colors/font_color = Color(0.580615, 0.0519404, 0.322269, 1)
 theme_override_fonts/font = ExtResource("2_vv0a8")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_d2nv2")
@@ -70,16 +68,15 @@ anchor_left = 0.093
 anchor_top = 0.005
 anchor_right = 0.955
 anchor_bottom = 0.179
-offset_left = -31.136002
-offset_top = -5.24
-offset_right = -31.160034
-offset_bottom = -3.9919968
+offset_left = -0.136002
+offset_top = -0.24
+offset_right = -0.160034
+offset_bottom = 1.008
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.85901284, 0.4167368, 0.116649725, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.0627451, 1, 0, 1)
 theme_override_fonts/font = ExtResource("2_vv0a8")
 theme_override_font_sizes/font_size = 143
-theme_override_styles/normal = SubResource("StyleBoxEmpty_y27vy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_d2nv2")
 text = "Dang"
 
 [node name="click" type="AudioStreamPlayer" parent="."]
