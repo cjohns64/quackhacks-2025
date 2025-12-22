@@ -38,6 +38,7 @@ func _ready():
 	hide()
 
 func show_level_up_menu():
+	$LEVELUP.play()
 	clear_buttons()
 	get_tree().paused = true
 	generate_random_options(3)
@@ -57,14 +58,14 @@ func create_upgrade_button(upgrade: Dictionary):
 	
 	# normal style
 	var button_style = StyleBoxFlat.new()
-	button_style.bg_color = Color(0.695, 0.209, 0.682, 1.0)  # Blue-ish
+	button_style.bg_color = Color(0.78, 0.32, 0.08, 1.0)  # Blue-ish
 	button_style.set_border_width_all(2)
 	button_style.border_color = Color(0.612, 0.85, 0.874, 1.0)
 	button.add_theme_stylebox_override("normal", button_style)
 
 	# hover style
 	var hover_style = StyleBoxFlat.new()
-	hover_style.bg_color = Color(0.8, 0.3, 0.8, 1.0)  # Lighter purple on hover
+	hover_style.bg_color = Color(0.78, 0.32, 0.08, 1.0)  # Lighter purple on hover
 	hover_style.set_border_width_all(2)
 	hover_style.border_color = Color(1.0, 1.0, 0.0, 1.0)  # Yellow border
 	button.add_theme_stylebox_override("hover", hover_style)

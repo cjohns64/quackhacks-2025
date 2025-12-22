@@ -86,6 +86,7 @@ stream = ExtResource("3_ymp2i")
 [node name="hover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_03qeq")
 
+[connection signal="mouse_entered" from="Resume" to="." method="_on_resume_mouse_entered"]
 [connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
 [connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

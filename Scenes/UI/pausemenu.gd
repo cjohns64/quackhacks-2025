@@ -28,6 +28,9 @@ func toggle_pause_menu() -> void:
 		get_tree().paused = true
 		show()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		
+func _on_resume_mouse_entered() ->void:
+	$hover.play()
 
 func _on_resume_pressed() -> void:
 	get_tree().paused = false
