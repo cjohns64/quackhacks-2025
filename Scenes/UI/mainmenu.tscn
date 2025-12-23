@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://chtonxaegbo54"]
+[gd_scene load_steps=8 format=3 uid="uid://chtonxaegbo54"]
 
 [ext_resource type="Script" uid="uid://cvuqk6nkfmmx0" path="res://MainMenu.gd" id="1_cmhrf"]
 [ext_resource type="FontFile" uid="uid://jbbxmrffrxqq" path="res://Assets/Fonts/m5x7.ttf" id="2_d2nv2"]
+[ext_resource type="Texture2D" uid="uid://oebr3eii846j" path="res://Assets/IMAGES/hangarshell.jpg" id="2_kcu8t"]
 [ext_resource type="AudioStream" uid="uid://q6iylgd1j0a2" path="res://Audio/buttonpress.mp3" id="3_igs2m"]
 [ext_resource type="AudioStream" uid="uid://vdd7r2c04aob" path="res://Audio/hover-button-287656.mp3" id="4_3pujl"]
 
@@ -23,6 +24,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cmhrf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 647.0
+texture = ExtResource("2_kcu8t")
+expand_mode = 1
 
 [node name="startbutton" type="Button" parent="."]
 layout_mode = 1
@@ -114,5 +122,5 @@ stream = ExtResource("4_3pujl")
 [connection signal="mouse_entered" from="settingsbutton" to="." method="_on_startbutton_mouse_entered"]
 [connection signal="pressed" from="settingsbutton" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="quitbutton" to="." method="_on_startbutton_mouse_entered"]
-[connection signal="pressed" from="quitbutton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="quitbutton" to="." method="_on_quitbutton_pressed"]
+[connection signal="pressed" from="quitbutton" to="." method="_on_button_pressed"]
