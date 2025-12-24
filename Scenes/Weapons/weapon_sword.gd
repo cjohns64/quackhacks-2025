@@ -2,8 +2,8 @@ extends Node3D
 
 @export var frequency: float = 70.0 # degrees per second
 
-@onready var sfx: AudioStreamPlayer3D = $sword2/SwordLoopFX
-@onready var loop_timer: Timer = $sword2/LoopTimer
+@onready var sfx: AudioStreamPlayer3D = $sword2/RigidBody3D/SwordLoopFX
+@onready var loop_timer: Timer = $sword2/RigidBody3D/LoopTimer
 
 var active := false
 
@@ -37,8 +37,8 @@ func _play_whoosh() -> void:
 func _stop_loop() -> void:
 	active = false
 	loop_timer.stop()
-	if sfx.playing:
-		sfx.stop()
+	#if sfx.playing:
+		#sfx.stop()
 
 func _on_rigid_body_3d_body_entered(body: Node) -> void:
 	if body.is_in_group("Enemies"):
