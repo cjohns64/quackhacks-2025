@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://4tgy7edoskwo"]
+[gd_scene load_steps=4 format=3 uid="uid://4tgy7edoskwo"]
 
 [ext_resource type="Script" uid="uid://dqwnxwyj3n6l2" path="res://Scenes/Weapons/laser.gd" id="1_ffbre"]
 [ext_resource type="Material" uid="uid://ojdssfsq7y1q" path="res://Scenes/Weapons/laser-mat.tres" id="2_6u4cp"]
+[ext_resource type="AudioStream" uid="uid://l405xqglb7et" path="res://Audio/autocannon.mp3" id="3_bp7qt"]
 
 [node name="laser" type="Node3D"]
 script = ExtResource("1_ffbre")
@@ -15,3 +16,6 @@ collision_mask = 2
 transform = Transform3D(0.1, 0, 0, 0, -4.371139e-09, 0.1, 0, -0.1, -4.371139e-09, 0, -6.808722e-08, -5.4505105)
 height = 100.0
 material = ExtResource("2_6u4cp")
+
+[node name="laserbeamsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bp7qt")

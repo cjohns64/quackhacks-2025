@@ -1,4 +1,5 @@
 extends Node3D
+signal laser_fired
 
 @onready var raycast = $laserbeam
 var laser_firing = false
@@ -9,9 +10,9 @@ var damage = 10
 
 func _ready() -> void:
 	laser_mesh.hide()
-
+	connect("laser_fired",$laserbeamsound.play)
 func _process(delta):
-	if raycast:
+	if not laser_firing:
 		fire_laser()
 	# await get_tree.createtimer(seconds).timeout
 	# use above function to do pauses
@@ -24,6 +25,7 @@ func fire_laser():
 		if hit_object.is_in_group("Enemies"):
 			laser_firing = true
 			laser_mesh.show()
+			emit_signal("laser_fired")
 			var player = EnemyManager.player_ship
 			var newDamage = player.modify_damage * damage
 			hit_object.DamageEnemy(newDamage)

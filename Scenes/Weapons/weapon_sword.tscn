@@ -23,4 +23,9 @@ max_contacts_reported = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004402133, -1.8153079)
 shape = SubResource("BoxShape3D_g87a1")
 
+[node name="LoopTimer" type="Timer" parent="sword2/RigidBody3D"]
+
+[node name="SwordLoopFX" type="AudioStreamPlayer3D" parent="sword2/RigidBody3D"]
+transform = Transform3D(2.2027419, 0, 0, 0, 2.2027419, 0, 0, 0, 2.2027419, 0, 0, 2.5297773)
+
 [connection signal="body_entered" from="sword2/RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]
